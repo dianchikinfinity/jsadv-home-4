@@ -1,0 +1,52 @@
+<!-- Доработайте пример, 005_thisExample.html, при наведении мыши к одному из блоков, цвет блока должен измениться, на уникальный, такой которого еще нету у существующих блоков. Также выведите в блок текстовое оповещение о информации цвета, который используется для фона данного блока. При попытке закрыть вкладку, придупредите пользователя о том что информация будет утеряна. Используйте window.onload.  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ключевое слово this</title>
+    <style>
+        div {
+            background-color:green;
+            display: block;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            /*float: left;*/
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>;
+        var first = Math.floor(Math.random() * 255);
+        var second = Math.floor(Math.random() * 255);
+        var third = Math.floor(Math.random() * 255);
+        setInterval(function() {first = Math.floor(Math.random() * 255)},100);
+        setInterval(function() {second = Math.floor(Math.random() * 255)},100);
+        setInterval(function() {third = Math.floor(Math.random() * 255)},100);
+        window.onload = function setColor() {
+        finish();
+        var newDiv = document.body.querySelectorAll("div");
+        for(var i =0; i < newDiv.length; i++) {
+            newDiv[i].onmouseover= function colorizer() {
+                this.style.backgroundColor= `rgb(${first}, ${second}, ${third})`;
+                this.innerHTML = this.style.backgroundColor
+            }
+        }
+        function randomColor(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        }
+        function finish() {
+        window.removeEventListener(onload, event)
+            window.onbeforeunload = function() {
+            return "Bye"
+            }
+        }
+    </script>
+</body>
+</html>
